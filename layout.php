@@ -27,13 +27,35 @@ ini_set('display_errors','1');
 
     <!-- Contenido principal -->
     <main class="mt-4">
+      <form action="GET">
+        <fieldset>
+        <legend>Elige que quieres ver</legend>
+        <input type="radio" id="productos" name="opcion" value="productos"><label for="productos">Productos</label><br>
+        <input type="radio" id="contactos" name="opcion" value="contactos"/><label for="contactos">Contactos</label>
+        </fieldset>
+        <br><br>
+        <button type="submit">Cambiar</button>
+      </form>
       <?php
+        $opcion = $_GET['opcion'];
         $cnt = __DIR__ . '/elementos/contenido.php';
-        if (is_file($cnt) && is_readable($cnt)) {
-          require_once $cnt;
-        } else {
-          echo '<div class="alert alert-danger">No se encuentra/lee contenido: ' . htmlspecialchars($cnt) . '</div>';
+        $contacs = __DIR__ .'/elementos/contactos.php';
+        if($opcion == "productos"){
+          if (is_file($cnt) && is_readable($cnt)) {
+            require_once $cnt;
+          } else {
+            echo '<div class="alert alert-danger">No se encuentra/lee contenido: ' . htmlspecialchars($cnt) . '</div>';
+          }
+        }else if($opcion = "contactos"){
+          if (is_file($contacs) && is_readable($contacs)) {
+            require_once $contacs;
+          } else {
+            echo '<div class="alert alert-danger">No se encuentra/lee contenido: ' . htmlspecialchars($contacs) . '</div>';
+          }
+        }else{
+          echo '<div class="alert alert-danger">No se encuentra/lee contenido</div>';
         }
+        
       ?>
     </main>
 
