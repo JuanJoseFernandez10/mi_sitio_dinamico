@@ -13,7 +13,8 @@
       $productos = [
       "Pan de Camas"        => 1.20,
       "Aceitunas aliñadas"  => 2.50,
-      "Tortas de aceite"    => 3.00
+      "Tortas de aceite"    => 3.00,
+      "Gildas de piparra y ancoha" => 5.99
       ];
       $string_keys = array_keys($productos);
       $i = 0;
